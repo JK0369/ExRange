@@ -11,9 +11,10 @@ class ViewController: UIViewController {
     private let textView = {
         let v = UITextView()
         v.textColor = .black
-        v.text = "text"
+        v.text = "iOS 앱 개발 알아가기 cursor 예제 코드"
         v.font = .systemFont(ofSize: 24)
         v.isEditable = true
+        v.backgroundColor = .lightGray.withAlphaComponent(0.3)
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -45,13 +46,16 @@ extension ViewController: UITextViewDelegate {
         shouldChangeTextIn range: NSRange,
         replacementText text: String
     ) -> Bool {
-        print("location", range.location)
-        print("length", range.length)
+//        print("location", range.location)
+//        print("length", range.length)
+//        print(range.upperBound)
+//        print(range.lowerBound)
         return true
     }
     
-//    func textViewDidChangeSelection(_ textView: UITextView) {
+    func textViewDidChangeSelection(_ textView: UITextView) {
 //        print(textView.selectedRange.location)
 //        print(textView.selectedRange.length)
-//    }
+        print(textView.selectedRange.lowerBound, textView.selectedRange.upperBound)
+    }
 }
